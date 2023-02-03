@@ -28,7 +28,7 @@ namespace Ejercicio_2
         
         public string RetornarDatos()
         {
-            //return every attribute in this class
+            //Retornar cada atributo de esta clase
             return "Id de la infidelidad: " + this.Id + "\n" +
                 "--------------------------------------" + "\n" +
                 "Nombre del Afectado: " + this.NombreAfectado + "\n" +
