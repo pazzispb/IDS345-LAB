@@ -26,7 +26,7 @@ namespace Ejercicio_1
             int stock = Convert.ToInt32(Console.ReadLine());
             Console.Write("ITBIS: ");
             double itbis = Convert.ToDouble(Console.ReadLine());
-            
+            Console.WriteLine();
             //Instanciacion del objeto de la clase Producto
             Producto producto = new Producto(nombre, precio, descripcion, stock, itbis);
             
