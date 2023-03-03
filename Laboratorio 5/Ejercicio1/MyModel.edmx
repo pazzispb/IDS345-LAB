@@ -1,0 +1,189 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+  <!-- EF Runtime content -->
+  <edmx:Runtime>
+    <!-- SSDL content -->
+    <edmx:StorageModels>
+      <Schema Namespace="Model.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+        <EntityType Name="tblEventos">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="CodigoGuerra" Type="int" Nullable="false" />
+          <Property Name="TipoEvento" Type="int" Nullable="false" />
+          <Property Name="Descripcion" Type="varchar" MaxLength="100" Nullable="false" />
+          <Property Name="FechaIngreso" Type="datetime" Nullable="false" />
+          <Property Name="FechaEvento" Type="datetime" Nullable="false" />
+          <Property Name="CantidadMuertos" Type="int" Nullable="false" />
+          <Property Name="CantidadHeridos" Type="int" Nullable="false" />
+        </EntityType>
+        <EntityType Name="tblGuerra">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="CodigoGuerra" Type="int" Nullable="false" />
+          <Property Name="Pais1" Type="varchar" MaxLength="100" Nullable="false" />
+          <Property Name="Pais2" Type="varchar" MaxLength="100" Nullable="false" />
+          <Property Name="FechaIngreso" Type="datetime" Nullable="false" />
+          <Property Name="FechaInicio" Type="datetime" Nullable="false" />
+          <Property Name="PaisGanador" Type="varchar" MaxLength="100" Nullable="false" />
+          <Property Name="CantidadMuertos" Type="int" Nullable="false" />
+          <Property Name="CantidadPresos" Type="int" Nullable="false" />
+          <Property Name="PerdidaFinanciera" Type="decimal" Precision="18" Scale="2" Nullable="false" />
+          <Property Name="EstadoGuerra" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="Heridos" Type="int" Nullable="false" />
+          <Property Name="FechaFin" Type="datetime" Nullable="false" />
+        </EntityType>
+        <Function Name="ppInsertEvento" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="CodigoGuerra" Type="int" Mode="In" />
+          <Parameter Name="TipoEvento" Type="int" Mode="In" />
+          <Parameter Name="Descripcion" Type="varchar" Mode="In" />
+          <Parameter Name="FechaEvento" Type="datetime" Mode="In" />
+          <Parameter Name="CantidadMuertos" Type="int" Mode="In" />
+          <Parameter Name="CantidadHeridos" Type="int" Mode="In" />
+        </Function>
+        <Function Name="ppUpsertGuerra" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="CodigoGuerra" Type="int" Mode="In" />
+          <Parameter Name="Pais1" Type="varchar" Mode="In" />
+          <Parameter Name="Pais2" Type="varchar" Mode="In" />
+          <Parameter Name="FechaInicio" Type="datetime" Mode="In" />
+          <Parameter Name="FechaFin" Type="datetime" Mode="In" />
+          <Parameter Name="PaisGanador" Type="varchar" Mode="In" />
+          <Parameter Name="CantidadMuertos" Type="int" Mode="In" />
+          <Parameter Name="CantidadPresos" Type="int" Mode="In" />
+          <Parameter Name="PerdidaFinanciera" Type="decimal" Mode="In" />
+          <Parameter Name="EstadoGuerra" Type="varchar" Mode="In" />
+          <Parameter Name="Heridos" Type="int" Mode="In" />
+        </Function>
+        <EntityContainer Name="ModelStoreContainer">
+          <EntitySet Name="tblEventos" EntityType="Self.tblEventos" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="tblGuerra" EntityType="Self.tblGuerra" Schema="dbo" store:Type="Tables" />
+        </EntityContainer>
+      </Schema>
+    </edmx:StorageModels>
+    <!-- CSDL content -->
+    <edmx:ConceptualModels>
+      <Schema Namespace="Model" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+        <EntityType Name="tblEvento">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="CodigoGuerra" Type="Int32" Nullable="false" />
+          <Property Name="TipoEvento" Type="Int32" Nullable="false" />
+          <Property Name="Descripcion" Type="String" MaxLength="100" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="FechaIngreso" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="FechaEvento" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="CantidadMuertos" Type="Int32" Nullable="false" />
+          <Property Name="CantidadHeridos" Type="Int32" Nullable="false" />
+        </EntityType>
+        <EntityType Name="tblGuerra">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="CodigoGuerra" Type="Int32" Nullable="false" />
+          <Property Name="Pais1" Type="String" MaxLength="100" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="Pais2" Type="String" MaxLength="100" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="FechaIngreso" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="FechaInicio" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="PaisGanador" Type="String" MaxLength="100" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="CantidadMuertos" Type="Int32" Nullable="false" />
+          <Property Name="CantidadPresos" Type="Int32" Nullable="false" />
+          <Property Name="PerdidaFinanciera" Type="Decimal" Precision="18" Scale="2" Nullable="false" />
+          <Property Name="EstadoGuerra" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="Heridos" Type="Int32" Nullable="false" />
+          <Property Name="FechaFin" Type="DateTime" Nullable="false" Precision="3" />
+        </EntityType>
+        <EntityContainer Name="Entities" annotation:LazyLoadingEnabled="true">
+          <EntitySet Name="tblEventos" EntityType="Self.tblEvento" />
+          <EntitySet Name="tblGuerras" EntityType="Self.tblGuerra" />
+          <FunctionImport Name="ppInsertEvento">
+            <Parameter Name="CodigoGuerra" Mode="In" Type="Int32" />
+            <Parameter Name="TipoEvento" Mode="In" Type="Int32" />
+            <Parameter Name="Descripcion" Mode="In" Type="String" />
+            <Parameter Name="FechaEvento" Mode="In" Type="DateTime" />
+            <Parameter Name="CantidadMuertos" Mode="In" Type="Int32" />
+            <Parameter Name="CantidadHeridos" Mode="In" Type="Int32" />
+          </FunctionImport>
+          <FunctionImport Name="ppUpsertGuerra">
+            <Parameter Name="CodigoGuerra" Mode="In" Type="Int32" />
+            <Parameter Name="Pais1" Mode="In" Type="String" />
+            <Parameter Name="Pais2" Mode="In" Type="String" />
+            <Parameter Name="FechaInicio" Mode="In" Type="DateTime" />
+            <Parameter Name="FechaFin" Mode="In" Type="DateTime" />
+            <Parameter Name="PaisGanador" Mode="In" Type="String" />
+            <Parameter Name="CantidadMuertos" Mode="In" Type="Int32" />
+            <Parameter Name="CantidadPresos" Mode="In" Type="Int32" />
+            <Parameter Name="PerdidaFinanciera" Mode="In" Type="Decimal" />
+            <Parameter Name="EstadoGuerra" Mode="In" Type="String" />
+            <Parameter Name="Heridos" Mode="In" Type="Int32" />
+          </FunctionImport>
+        </EntityContainer>
+      </Schema>
+    </edmx:ConceptualModels>
+    <!-- C-S mapping content -->
+    <edmx:Mappings>
+      <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+        <EntityContainerMapping StorageEntityContainer="ModelStoreContainer" CdmEntityContainer="Entities">
+          <EntitySetMapping Name="tblEventos">
+            <EntityTypeMapping TypeName="Model.tblEvento">
+              <MappingFragment StoreEntitySet="tblEventos">
+                <ScalarProperty Name="Id" ColumnName="Id" />
+                <ScalarProperty Name="CodigoGuerra" ColumnName="CodigoGuerra" />
+                <ScalarProperty Name="TipoEvento" ColumnName="TipoEvento" />
+                <ScalarProperty Name="Descripcion" ColumnName="Descripcion" />
+                <ScalarProperty Name="FechaIngreso" ColumnName="FechaIngreso" />
+                <ScalarProperty Name="FechaEvento" ColumnName="FechaEvento" />
+                <ScalarProperty Name="CantidadMuertos" ColumnName="CantidadMuertos" />
+                <ScalarProperty Name="CantidadHeridos" ColumnName="CantidadHeridos" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="tblGuerras">
+            <EntityTypeMapping TypeName="Model.tblGuerra">
+              <MappingFragment StoreEntitySet="tblGuerra">
+                <ScalarProperty Name="Id" ColumnName="Id" />
+                <ScalarProperty Name="CodigoGuerra" ColumnName="CodigoGuerra" />
+                <ScalarProperty Name="Pais1" ColumnName="Pais1" />
+                <ScalarProperty Name="Pais2" ColumnName="Pais2" />
+                <ScalarProperty Name="FechaIngreso" ColumnName="FechaIngreso" />
+                <ScalarProperty Name="FechaInicio" ColumnName="FechaInicio" />
+                <ScalarProperty Name="PaisGanador" ColumnName="PaisGanador" />
+                <ScalarProperty Name="CantidadMuertos" ColumnName="CantidadMuertos" />
+                <ScalarProperty Name="CantidadPresos" ColumnName="CantidadPresos" />
+                <ScalarProperty Name="PerdidaFinanciera" ColumnName="PerdidaFinanciera" />
+                <ScalarProperty Name="EstadoGuerra" ColumnName="EstadoGuerra" />
+                <ScalarProperty Name="Heridos" ColumnName="Heridos" />
+                <ScalarProperty Name="FechaFin" ColumnName="FechaFin" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <FunctionImportMapping FunctionImportName="ppInsertEvento" FunctionName="Model.Store.ppInsertEvento" />
+          <FunctionImportMapping FunctionImportName="ppUpsertGuerra" FunctionName="Model.Store.ppUpsertGuerra" />
+        </EntityContainerMapping>
+      </Mapping>
+    </edmx:Mappings>
+  </edmx:Runtime>
+  <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <Connection>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="MetadataArtifactProcessing" Value="EmbedInOutputAssembly" />
+      </DesignerInfoPropertySet>
+    </Connection>
+    <Options>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="ValidateOnBuild" Value="true" />
+        <DesignerProperty Name="EnablePluralization" Value="true" />
+        <DesignerProperty Name="IncludeForeignKeysInModel" Value="true" />
+        <DesignerProperty Name="UseLegacyProvider" Value="false" />
+        <DesignerProperty Name="CodeGenerationStrategy" Value="None" />
+      </DesignerInfoPropertySet>
+    </Options>
+    <!-- Diagram content (shape and connector positions) -->
+    <Diagrams></Diagrams>
+  </Designer>
+</edmx:Edmx>
