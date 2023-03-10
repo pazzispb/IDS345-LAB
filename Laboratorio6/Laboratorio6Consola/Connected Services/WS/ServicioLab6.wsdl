@@ -1,0 +1,87 @@
+<?xml version="1.0" encoding="utf-8"?>
+<wsdl:definitions xmlns:soap12="http://schemas.xmlsoap.org/wsdl/soap12/" xmlns:s="http://www.w3.org/2001/XMLSchema" xmlns:tm="http://microsoft.com/wsdl/mime/textMatching/" xmlns:soapenc="http://schemas.xmlsoap.org/soap/encoding/" xmlns:http="http://schemas.xmlsoap.org/wsdl/http/" xmlns:tns="http://tempuri.org/" xmlns:mime="http://schemas.xmlsoap.org/wsdl/mime/" xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/" targetNamespace="http://tempuri.org/" xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">
+  <wsdl:types>
+    <s:schema elementFormDefault="qualified" targetNamespace="http://tempuri.org/">
+      <s:element name="RegistrarVerdugo">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="descripcion" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="verdugo" type="tns:tblVerdugo" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:complexType name="tblVerdugo">
+        <s:sequence>
+          <s:element minOccurs="1" maxOccurs="1" name="Id" type="s:int" />
+          <s:element minOccurs="1" maxOccurs="1" name="TipoDocumento" type="s:int" />
+          <s:element minOccurs="0" maxOccurs="1" name="Documento" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="Nombres" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="Apellidos" type="s:string" />
+          <s:element minOccurs="1" maxOccurs="1" name="FNacimiento" type="s:dateTime" />
+          <s:element minOccurs="1" maxOccurs="1" name="FEvento" type="s:dateTime" />
+          <s:element minOccurs="1" maxOccurs="1" name="FRegistro" type="s:dateTime" />
+          <s:element minOccurs="1" maxOccurs="1" name="CantidadHijos" type="s:int" />
+          <s:element minOccurs="1" maxOccurs="1" name="Vivo" type="s:boolean" />
+          <s:element minOccurs="1" maxOccurs="1" name="Preso" type="s:boolean" />
+        </s:sequence>
+      </s:complexType>
+      <s:element name="RegistrarVerdugoResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="RegistrarVerdugoResult" type="tns:Respuesta" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:complexType name="Respuesta">
+        <s:sequence>
+          <s:element minOccurs="1" maxOccurs="1" name="Codigo" type="s:int" />
+          <s:element minOccurs="0" maxOccurs="1" name="Mensaje" type="s:string" />
+        </s:sequence>
+      </s:complexType>
+    </s:schema>
+  </wsdl:types>
+  <wsdl:message name="RegistrarVerdugoSoapIn">
+    <wsdl:part name="parameters" element="tns:RegistrarVerdugo" />
+  </wsdl:message>
+  <wsdl:message name="RegistrarVerdugoSoapOut">
+    <wsdl:part name="parameters" element="tns:RegistrarVerdugoResponse" />
+  </wsdl:message>
+  <wsdl:portType name="ServicioLab6Soap">
+    <wsdl:operation name="RegistrarVerdugo">
+      <wsdl:input message="tns:RegistrarVerdugoSoapIn" />
+      <wsdl:output message="tns:RegistrarVerdugoSoapOut" />
+    </wsdl:operation>
+  </wsdl:portType>
+  <wsdl:binding name="ServicioLab6Soap" type="tns:ServicioLab6Soap">
+    <soap:binding transport="http://schemas.xmlsoap.org/soap/http" />
+    <wsdl:operation name="RegistrarVerdugo">
+      <soap:operation soapAction="http://tempuri.org/RegistrarVerdugo" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+  </wsdl:binding>
+  <wsdl:binding name="ServicioLab6Soap12" type="tns:ServicioLab6Soap">
+    <soap12:binding transport="http://schemas.xmlsoap.org/soap/http" />
+    <wsdl:operation name="RegistrarVerdugo">
+      <soap12:operation soapAction="http://tempuri.org/RegistrarVerdugo" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+  </wsdl:binding>
+  <wsdl:service name="ServicioLab6">
+    <wsdl:port name="ServicioLab6Soap" binding="tns:ServicioLab6Soap">
+      <soap:address location="https://localhost:44342/ServicioLab6.asmx" />
+    </wsdl:port>
+    <wsdl:port name="ServicioLab6Soap12" binding="tns:ServicioLab6Soap12">
+      <soap12:address location="https://localhost:44342/ServicioLab6.asmx" />
+    </wsdl:port>
+  </wsdl:service>
+</wsdl:definitions>
