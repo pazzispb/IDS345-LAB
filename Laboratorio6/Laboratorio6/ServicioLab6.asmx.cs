@@ -46,7 +46,7 @@ namespace Laboratorio6
                     transaccion.Rollback();
                     respuesta = new Respuesta()
                     {
-                        Codigo = 0,
+                        Codigo = 1,
                         Mensaje = "Hubo un error al guardar al verdugo"
                     };
                 }
