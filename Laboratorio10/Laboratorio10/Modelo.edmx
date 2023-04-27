@@ -1,0 +1,199 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+  <!-- EF Runtime content -->
+  <edmx:Runtime>
+    <!-- SSDL content -->
+    <edmx:StorageModels>
+      <Schema Namespace="Model.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+        <EntityType Name="tblSolicitante">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="TipoDocumento" Type="nvarchar" MaxLength="200" />
+          <Property Name="Documento" Type="nvarchar" MaxLength="200" />
+          <Property Name="FNacimiento" Type="datetime" />
+          <Property Name="FIngreso" Type="datetime" />
+          <Property Name="Estado" Type="nvarchar" MaxLength="200" />
+          <Property Name="Nombres" Type="nvarchar" MaxLength="200" />
+          <Property Name="Apellidos" Type="nvarchar" MaxLength="200" />
+          <Property Name="Direccion" Type="nvarchar" MaxLength="200" />
+          <Property Name="EstadoCivil" Type="nvarchar" MaxLength="200" />
+          <Property Name="AprobadoEsposo" Type="nvarchar" MaxLength="200" />
+        </EntityType>
+        <EntityType Name="tblSolicitud">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="TipoDocumento" Type="nvarchar" MaxLength="200" />
+          <Property Name="Documento" Type="nvarchar" MaxLength="200" />
+          <Property Name="FechaSolicitud" Type="datetime" />
+          <Property Name="Estado" Type="nvarchar" MaxLength="200" />
+          <Property Name="NivelAcademicoDonante" Type="nvarchar" MaxLength="200" />
+          <Property Name="EstaturaDonante" Type="decimal" Precision="18" Scale="2" />
+          <Property Name="TamanoPiesDonante" Type="decimal" Precision="18" Scale="2" />
+          <Property Name="ColorOjosDonante" Type="nvarchar" MaxLength="200" />
+          <Property Name="NacionalidadDonante" Type="nvarchar" MaxLength="200" />
+          <Property Name="Descripcion" Type="nvarchar" MaxLength="200" />
+          <Property Name="EdadPromedioDonante" Type="nvarchar" MaxLength="200" />
+        </EntityType>
+        <Function Name="spInsertarSolicitante" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="TipoDocumento" Type="nvarchar" Mode="In" />
+          <Parameter Name="Documento" Type="nvarchar" Mode="In" />
+          <Parameter Name="FNacimiento" Type="datetime" Mode="In" />
+          <Parameter Name="Estado" Type="nvarchar" Mode="In" />
+          <Parameter Name="Nombres" Type="nvarchar" Mode="In" />
+          <Parameter Name="Apellidos" Type="nvarchar" Mode="In" />
+          <Parameter Name="Direccion" Type="nvarchar" Mode="In" />
+          <Parameter Name="EstadoCivil" Type="nvarchar" Mode="In" />
+          <Parameter Name="AprobadoEsposo" Type="nvarchar" Mode="In" />
+        </Function>
+        <Function Name="spInsertarSolicitud" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="TipoDocumento" Type="nvarchar" Mode="In" />
+          <Parameter Name="Documento" Type="nvarchar" Mode="In" />
+          <Parameter Name="Estado" Type="nvarchar" Mode="In" />
+          <Parameter Name="NivelAcademicoDonante" Type="nvarchar" Mode="In" />
+          <Parameter Name="EstaturaDonante" Type="decimal" Mode="In" />
+          <Parameter Name="TamanoPiesDonante" Type="decimal" Mode="In" />
+          <Parameter Name="ColorOjosDonante" Type="nvarchar" Mode="In" />
+          <Parameter Name="NacionalidadDonante" Type="nvarchar" Mode="In" />
+          <Parameter Name="Descripcion" Type="nvarchar" Mode="In" />
+          <Parameter Name="EdadPromedioDonante" Type="nvarchar" Mode="In" />
+        </Function>
+        <EntityContainer Name="ModelStoreContainer">
+          <EntitySet Name="tblSolicitante" EntityType="Self.tblSolicitante" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="tblSolicitud" EntityType="Self.tblSolicitud" Schema="dbo" store:Type="Tables" />
+        </EntityContainer>
+      </Schema>
+    </edmx:StorageModels>
+    <!-- CSDL content -->
+    <edmx:ConceptualModels>
+      <Schema Namespace="Model" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+        <EntityType Name="tblSolicitante">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="TipoDocumento" Type="String" MaxLength="200" FixedLength="false" Unicode="true" />
+          <Property Name="Documento" Type="String" MaxLength="200" FixedLength="false" Unicode="true" />
+          <Property Name="FNacimiento" Type="DateTime" Precision="3" />
+          <Property Name="FIngreso" Type="DateTime" Precision="3" />
+          <Property Name="Estado" Type="String" MaxLength="200" FixedLength="false" Unicode="true" />
+          <Property Name="Nombres" Type="String" MaxLength="200" FixedLength="false" Unicode="true" />
+          <Property Name="Apellidos" Type="String" MaxLength="200" FixedLength="false" Unicode="true" />
+          <Property Name="Direccion" Type="String" MaxLength="200" FixedLength="false" Unicode="true" />
+          <Property Name="EstadoCivil" Type="String" MaxLength="200" FixedLength="false" Unicode="true" />
+          <Property Name="AprobadoEsposo" Type="String" MaxLength="200" FixedLength="false" Unicode="true" />
+        </EntityType>
+        <EntityType Name="tblSolicitud">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="TipoDocumento" Type="String" MaxLength="200" FixedLength="false" Unicode="true" />
+          <Property Name="Documento" Type="String" MaxLength="200" FixedLength="false" Unicode="true" />
+          <Property Name="FechaSolicitud" Type="DateTime" Precision="3" />
+          <Property Name="Estado" Type="String" MaxLength="200" FixedLength="false" Unicode="true" />
+          <Property Name="NivelAcademicoDonante" Type="String" MaxLength="200" FixedLength="false" Unicode="true" />
+          <Property Name="EstaturaDonante" Type="Decimal" Precision="18" Scale="2" />
+          <Property Name="TamanoPiesDonante" Type="Decimal" Precision="18" Scale="2" />
+          <Property Name="ColorOjosDonante" Type="String" MaxLength="200" FixedLength="false" Unicode="true" />
+          <Property Name="NacionalidadDonante" Type="String" MaxLength="200" FixedLength="false" Unicode="true" />
+          <Property Name="Descripcion" Type="String" MaxLength="200" FixedLength="false" Unicode="true" />
+          <Property Name="EdadPromedioDonante" Type="String" MaxLength="200" FixedLength="false" Unicode="true" />
+        </EntityType>
+        <EntityContainer Name="Entities" annotation:LazyLoadingEnabled="true">
+          <EntitySet Name="tblSolicitantes" EntityType="Self.tblSolicitante" />
+          <EntitySet Name="tblSolicituds" EntityType="Self.tblSolicitud" />
+          <FunctionImport Name="spInsertarSolicitante">
+            <Parameter Name="TipoDocumento" Mode="In" Type="String" />
+            <Parameter Name="Documento" Mode="In" Type="String" />
+            <Parameter Name="FNacimiento" Mode="In" Type="DateTime" />
+            <Parameter Name="Estado" Mode="In" Type="String" />
+            <Parameter Name="Nombres" Mode="In" Type="String" />
+            <Parameter Name="Apellidos" Mode="In" Type="String" />
+            <Parameter Name="Direccion" Mode="In" Type="String" />
+            <Parameter Name="EstadoCivil" Mode="In" Type="String" />
+            <Parameter Name="AprobadoEsposo" Mode="In" Type="String" />
+          </FunctionImport>
+          <FunctionImport Name="spInsertarSolicitud">
+            <Parameter Name="TipoDocumento" Mode="In" Type="String" />
+            <Parameter Name="Documento" Mode="In" Type="String" />
+            <Parameter Name="Estado" Mode="In" Type="String" />
+            <Parameter Name="NivelAcademicoDonante" Mode="In" Type="String" />
+            <Parameter Name="EstaturaDonante" Mode="In" Type="Decimal" />
+            <Parameter Name="TamanoPiesDonante" Mode="In" Type="Decimal" />
+            <Parameter Name="ColorOjosDonante" Mode="In" Type="String" />
+            <Parameter Name="NacionalidadDonante" Mode="In" Type="String" />
+            <Parameter Name="Descripcion" Mode="In" Type="String" />
+            <Parameter Name="EdadPromedioDonante" Mode="In" Type="String" />
+          </FunctionImport>
+        </EntityContainer>
+      </Schema>
+    </edmx:ConceptualModels>
+    <!-- C-S mapping content -->
+    <edmx:Mappings>
+      <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+        <EntityContainerMapping StorageEntityContainer="ModelStoreContainer" CdmEntityContainer="Entities">
+          <EntitySetMapping Name="tblSolicitantes">
+            <EntityTypeMapping TypeName="Model.tblSolicitante">
+              <MappingFragment StoreEntitySet="tblSolicitante">
+                <ScalarProperty Name="Id" ColumnName="Id" />
+                <ScalarProperty Name="TipoDocumento" ColumnName="TipoDocumento" />
+                <ScalarProperty Name="Documento" ColumnName="Documento" />
+                <ScalarProperty Name="FNacimiento" ColumnName="FNacimiento" />
+                <ScalarProperty Name="FIngreso" ColumnName="FIngreso" />
+                <ScalarProperty Name="Estado" ColumnName="Estado" />
+                <ScalarProperty Name="Nombres" ColumnName="Nombres" />
+                <ScalarProperty Name="Apellidos" ColumnName="Apellidos" />
+                <ScalarProperty Name="Direccion" ColumnName="Direccion" />
+                <ScalarProperty Name="EstadoCivil" ColumnName="EstadoCivil" />
+                <ScalarProperty Name="AprobadoEsposo" ColumnName="AprobadoEsposo" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="tblSolicituds">
+            <EntityTypeMapping TypeName="Model.tblSolicitud">
+              <MappingFragment StoreEntitySet="tblSolicitud">
+                <ScalarProperty Name="Id" ColumnName="Id" />
+                <ScalarProperty Name="TipoDocumento" ColumnName="TipoDocumento" />
+                <ScalarProperty Name="Documento" ColumnName="Documento" />
+                <ScalarProperty Name="FechaSolicitud" ColumnName="FechaSolicitud" />
+                <ScalarProperty Name="Estado" ColumnName="Estado" />
+                <ScalarProperty Name="NivelAcademicoDonante" ColumnName="NivelAcademicoDonante" />
+                <ScalarProperty Name="EstaturaDonante" ColumnName="EstaturaDonante" />
+                <ScalarProperty Name="TamanoPiesDonante" ColumnName="TamanoPiesDonante" />
+                <ScalarProperty Name="ColorOjosDonante" ColumnName="ColorOjosDonante" />
+                <ScalarProperty Name="NacionalidadDonante" ColumnName="NacionalidadDonante" />
+                <ScalarProperty Name="Descripcion" ColumnName="Descripcion" />
+                <ScalarProperty Name="EdadPromedioDonante" ColumnName="EdadPromedioDonante" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <FunctionImportMapping FunctionImportName="spInsertarSolicitante" FunctionName="Model.Store.spInsertarSolicitante" />
+          <FunctionImportMapping FunctionImportName="spInsertarSolicitud" FunctionName="Model.Store.spInsertarSolicitud" />
+        </EntityContainerMapping>
+      </Mapping>
+    </edmx:Mappings>
+  </edmx:Runtime>
+  <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <Connection>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="MetadataArtifactProcessing" Value="EmbedInOutputAssembly" />
+      </DesignerInfoPropertySet>
+    </Connection>
+    <Options>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="ValidateOnBuild" Value="true" />
+        <DesignerProperty Name="EnablePluralization" Value="true" />
+        <DesignerProperty Name="IncludeForeignKeysInModel" Value="true" />
+        <DesignerProperty Name="UseLegacyProvider" Value="false" />
+        <DesignerProperty Name="CodeGenerationStrategy" Value="None" />
+      </DesignerInfoPropertySet>
+    </Options>
+    <!-- Diagram content (shape and connector positions) -->
+    <Diagrams></Diagrams>
+  </Designer>
+</edmx:Edmx>
